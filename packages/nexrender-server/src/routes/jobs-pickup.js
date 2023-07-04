@@ -5,6 +5,7 @@ const { Mutex }  = require('async-mutex');
 
 const mutex = new Mutex();
 
+let lastJobStage = null;
 module.exports = async (req, res) => {
     const release = await mutex.acquire();
 
@@ -39,6 +40,35 @@ module.exports = async (req, res) => {
                 if (isNaN(b.priority)) b.priority = 0
                 return b.priority - a.priority
             })[0]
+        } else if (process.env.NEXRENDER_ORDERING === 'stage-distributed') {
+            // collect all possible stages
+            const stages = types.reduce((res, item) => {
+                const jobStages = item.filterPolicy?.stage;
+                if (!Array.isArray(jobStages)) {
+                    return res;
+                }
+                jobStages.forEach(stage => {
+                    if (!res.includes(stage)) {
+                        res.push(stage)
+                    }
+                })
+
+                return res;
+            }, [])
+
+            if (!stages.length || !lastJobStage) {
+                return queued[0];
+            }
+
+            job = queued.sort((a, b) => {
+                const aStageIndex = stages.indexOf(a.ct?.attributes?.stage || '')
+                const bStageIndex = stages.indexOf(b.ct?.attributes?.stage || '')
+                if (aStageIndex === bStageIndex) {
+                    return new Date(a.createdAt).getTime() > new Date(b.createdAt).getTime() ? 1 : -1
+                }
+                return aStageIndex - bStageIndex
+            })[0]
+            lastJobStage = job.ct?.attributes?.stage;
         }
         else { /* fifo (oldest-first) */
             job = queued[0];
