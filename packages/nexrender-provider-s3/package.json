@@ -1,13 +1,13 @@
 {
   "name": "@create-global/nexrender-provider-s3",
-  "version": "1.39.12",
+  "version": "1.52.1",
   "author": "inlife",
   "main": "src/index.js",
   "dependencies": {
-    "amazon-s3-uri": "0.1.1",
     "@aws-sdk/client-s3": "^3.705.0",
     "@aws-sdk/credential-providers": "^3.699.0",
-    "@aws-sdk/lib-storage": "^3.705.0"
+    "@aws-sdk/lib-storage": "^3.705.0",
+    "amazon-s3-uri": "0.1.1"
   },
   "publishConfig": {
     "access": "public"
