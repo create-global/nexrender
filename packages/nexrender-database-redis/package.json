@@ -1,10 +1,10 @@
 {
   "name": "@create-global/nexrender-database-redis",
-  "version": "1.51.1",
+  "version": "1.52.2",
   "author": "inlife",
   "main": "src/index.js",
   "dependencies": {
-    "@create-global/nexrender-core": "^1.51.1",
+    "@create-global/nexrender-core": "^1.52.2",
     "redis": "^4.5.0"
   },
   "publishConfig": {
