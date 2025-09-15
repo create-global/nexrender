@@ -18,6 +18,7 @@
     "purge-cache": "lerna exec 'rm -rf node_modules && rm -f package-lock.json'",
     "purge-master": "rm -rf node_modules && rm -f package-lock.json",
     "publish": "lerna publish",
+    "force-publish": "lerna publish --force-publish",
     "public-publish": "lerna exec 'npm publish --access public'",
     "pkg-rename": "node misc/rename.js",
     "pkg-cli": "cross-env NEXRENDER_REQUIRE_PLUGINS=1 pkg packages/nexrender-cli/package.json --out-path bin/",
