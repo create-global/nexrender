@@ -1,6 +1,6 @@
 {
   "name": "@create-global/nexrender-server",
-  "version": "1.52.2",
+  "version": "1.53.0",
   "author": "inlife",
   "main": "src/index.js",
   "scripts": {
