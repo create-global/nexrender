@@ -68,7 +68,27 @@ const {createHandler} = require('@create-global/nexrender-server')
 const handler = createHandler('myapisecret')
 
 module.exports = (req, res) => handler(req, res)
-````
+```
+
+### Job Pickup Hooks
+
+You can modify jobs before they're sent to workers (e.g. inject temporary credentials):
+
+```js
+const {createHandler} = require('@create-global/nexrender-server')
+const handler = createHandler('myapisecret')
+
+const withHooks = (req, res) => {
+  req.onJobPickup = async (job) => {
+    // Modify job object here
+    job.assets = job.assets.map(asset => ({
+      ...asset,
+      credentials: await getCredentials()
+    }))
+  }
+  return handler(req, res)
+}
+```
 ## API Routes
 
 Here is a short description of all api routes:
