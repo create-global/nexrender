@@ -59,11 +59,22 @@ module.exports = async (req, res) => {
         }
 
         /* update the job locally, and send it to the worker */
-        send(res, 200, await update(
+        const pickedJob = await update(
             job.uid,
             { state: 'picked', executor: req.headers['x-worker-name'] || req.headers["x-forwarded-for"] || req.socket.remoteAddress },
             { transaction: true }
-        ))
+        );
+
+        // Hook: allows modifying job before sending to worker (e.g. inject credentials)
+        if (req.onJobPickup && typeof req.onJobPickup === 'function') {
+            try {
+                await req.onJobPickup(pickedJob);
+            } catch (err) {
+                console.error('[pickup] Failed to run onJobPickup hook:', err.message);
+            }
+        }
+
+        send(res, 200, pickedJob)
     } finally {
         release();
     }
