@@ -1,6 +1,6 @@
 {
   "name": "@create-global/nexrender-provider-gs",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "author": "dockheas23",
   "main": "src/index.js",
   "dependencies": {

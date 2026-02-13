@@ -1,6 +1,6 @@
 {
   "name": "@create-global/nexrender-provider-ftp",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "author": "zuntah",
   "main": "src/index.js",
   "dependencies": {

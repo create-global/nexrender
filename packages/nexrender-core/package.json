@@ -1,6 +1,6 @@
 {
   "name": "@create-global/nexrender-core",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "main": "src/index.js",
   "author": "Inlife",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@create-global/nexrender-types": "^1.52.2",
+    "@create-global/nexrender-types": "^1.54.1",
     "data-uri-to-buffer": "^3.0.0",
     "file-uri-to-path": "^2.0.0",
     "is-wsl": "^2.2.0",

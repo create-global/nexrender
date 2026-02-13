@@ -1,7 +1,7 @@
 {
   "name": "@create-global/nexrender-action-cache",
   "author": "dylangarcia",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "main": "index.js",
   "publishConfig": {
     "access": "public"

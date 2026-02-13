@@ -1,7 +1,7 @@
 {
   "name": "@create-global/nexrender-action-copy",
   "author": "inlife",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "main": "index.js",
   "publishConfig": {
     "access": "public"

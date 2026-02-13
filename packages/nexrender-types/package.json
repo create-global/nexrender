@@ -1,6 +1,6 @@
 {
   "name": "@create-global/nexrender-types",
-  "version": "1.52.2",
+  "version": "1.54.1",
   "author": "Inlife",
   "main": "src/index.js",
   "dependencies": {
